@@ -2,16 +2,10 @@
 
 Simple service for demonstration purposes with Kubernetes.
 
-### Build
+### Build & Package
 
 ```sh
-$ mvn clean package
-```
-
-## Package 
-
-```sh
-$ docker build . -t hello-world:???
+$ mvn clean compile jib:dockerBuild -Dimage=hello-world:???
 ```
 
 ### Deploy
