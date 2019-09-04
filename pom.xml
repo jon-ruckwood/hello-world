@@ -3,7 +3,16 @@
 
     <groupId>net.selfdotlearn</groupId>
     <artifactId>hello-world</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>${revision}</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <revision>0-SNAPSHOT</revision>
+    </properties>
+
+    <scm>
+        <connection>scm:git:git@github.com:jon-ruckwood/hello-world.git</connection>
+    </scm>
 
     <dependencies>
         <dependency>
@@ -35,6 +44,23 @@
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
                 <version>1.5.1</version>
+                <executions>
+                    <execution>
+                        <id>build</id>
+                        <goals>
+                            <goal>dockerBuild</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-scm-plugin</artifactId>
+                <version>1.11.2</version>
+                <configuration>
+                    <tag>release/${project.version}</tag>
+                </configuration>
             </plugin>
         </plugins>
     </build>
