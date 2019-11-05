@@ -19,3 +19,4 @@ $ kubectl apply -f deploy/deployment.yaml
 $ PORT=`kubectl get service hello-world-service -o=jsonpath='{.spec.ports[0].nodePort}'`; \
   curl http://localhost:$PORT/
 ```
+
